@@ -45,6 +45,7 @@ export default function App() {
   const [editTarget, setEditTarget] = useState(null)
   const [showSettings, setShowSettings] = useState(false)
   const [milestoneActive, setMilestoneActive] = useState(false)
+  const [refreshedAt, setRefreshedAt] = useState(Date.now())
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -101,9 +102,14 @@ export default function App() {
         <div className="flex items-center justify-between px-5 pt-12 pb-2">
           <div>
             <h1 className="text-white font-semibold text-xl">{greeting} 🐱</h1>
-            <p className="text-slate-500 text-xs mt-0.5">
+            <button
+              onClick={() => setRefreshedAt(Date.now())}
+              aria-label="Refresh"
+              className="flex items-center gap-1.5 text-slate-500 text-xs mt-0.5 hover:text-slate-300 transition-colors group"
+            >
               {today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
-            </p>
+              <span className="opacity-40 group-hover:opacity-100 transition-opacity" aria-hidden="true">↻</span>
+            </button>
           </div>
           <button
             onClick={() => setShowSettings(!showSettings)}
