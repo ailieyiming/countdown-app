@@ -17,7 +17,9 @@ export function CountdownCard({ countdown, onEdit, onDelete, isPast }) {
   const style = {
     transform: CSS.Transform.toString(transform),
     transition,
-    opacity: isDragging ? 0.5 : 1
+    opacity: isDragging ? 0.5 : 1,
+    backgroundColor: isPast ? undefined : countdown.color + '22',
+    borderColor: isPast ? undefined : countdown.color + '66'
   }
 
   const days = daysUntil(countdown.targetDate)
@@ -29,11 +31,8 @@ export function CountdownCard({ countdown, onEdit, onDelete, isPast }) {
       ref={setNodeRef}
       style={style}
       className={`mx-4 mb-3 rounded-2xl border flex items-center gap-3 px-4 py-3 select-none
-        ${isPast
-          ? 'bg-slate-800/30 border-slate-700/30'
-          : 'bg-slate-800/60 border-slate-700/40'
-        }
-        ${isToday ? 'ring-1 ring-indigo-500/50 bg-indigo-950/50' : ''}
+        ${isPast ? 'bg-slate-800/30 border-slate-700/30' : ''}
+        ${isToday ? 'ring-1' : ''}
         ${isDragging ? 'shadow-lg shadow-black/50' : ''}
       `}
     >

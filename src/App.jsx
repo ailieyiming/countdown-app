@@ -100,7 +100,7 @@ export default function App() {
         {/* Header */}
         <div className="flex items-center justify-between px-5 pt-12 pb-2">
           <div>
-            <h1 className="text-white font-semibold text-xl">{greeting} ✨</h1>
+            <h1 className="text-white font-semibold text-xl">{greeting} 🐱</h1>
             <p className="text-slate-500 text-xs mt-0.5">
               {today.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}
             </p>
